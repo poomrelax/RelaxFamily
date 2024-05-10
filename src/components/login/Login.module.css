@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Madimi+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container{
+    background: url('https://images.unsplash.com/photo-1508020963102-c6c723be5764?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2t5fGVufDB8fDB8fHww') no-repeat center fixed;
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blue(10px);
+    padding: 1rem;
+    overflow: hidden;
+    transition: .3s ease-in;
+    border-radius: 5px;
+}
+
+.container .content h2{
+    margin-bottom: 2rem;
+}
+
+.container .content .input{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container .content .input input{
+    padding: 7px;
+    outline: none;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: .3s ease;
+    overflow: hidden;
+}
+
+.container .content .input input:focus{
+    border: 2px solid rgb(255, 193, 23);
+}
+
+.container .content .btn button{
+    padding: 5px;
+    border: 2px solid #ccc;
+    background: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    color: black;
+    transition: .3s ease-in;
+}
+
+.container .content .btn button:hover{
+    border: 2px solid #2b2b2b;
+    background: #000000;
+    color: #fff;
+}
