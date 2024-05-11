@@ -1,15 +1,22 @@
 import "./content.css";
 import React, { useState, useEffect } from "react";
+import BarLoader from "react-spinners/BarLoader";
 function Content() {
 
   const [data, setdata] = useState([]);
+  const [loading, setloading] = useState(true);
 
   async function fetchData() {
-    const res = await fetch("https://apipoomrelax.onrender.com/video/");
+    try{
+      const res = await fetch("https://apipoomrelax.onrender.com/video/");
     res
       .json()
       .then((res) => setdata(res))
       .catch((err) => console.log(err));
+    }
+      finally{
+        setloading(false)
+      }
   }
 
   useEffect(() => {
@@ -17,7 +24,14 @@ function Content() {
   }, []);
 
   return (
-    <div className="video">
+    <>
+      {loading ?
+       ( <div className="loader">
+          <BarLoader color={"#fde616"} loading={loading} size={20} />
+        </div>
+        ) : (
+          <>
+             <div className="video">
       {data.map((name) => {
         return (
           <>
@@ -34,7 +48,9 @@ function Content() {
         );
       })}
     </div>
-  );
+          </>
+        )}
+    </>
+  )
 }
-
 export default Content;

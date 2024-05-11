@@ -44,14 +44,14 @@ function Information() {
             return (
                 <>
                 <img src={user.image}/>
-                <h2>Name</h2>
+                <h2>{user.name}</h2>
                 <p>ชื่อ : {user.fname}</p>
                 <p>นามสกุล : {user.lname}</p>
                 <p>อายุ : {user.old}</p>
                 <p>อยู่ : {user.primary}</p>
                 <div className={infor.detail}>
                     <div className={infor.face}>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"/>
+                        <img key={user.old} src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"/>
                         <p>{user.facebook}</p>
                     </div>
                     <div className={infor.phone}>
