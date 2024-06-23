@@ -6,19 +6,35 @@ import Information from './components/information/information.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Login from './components/login/login.jsx'
+import HomeWork from './components/HomeWork/HomeWork.jsx'
+import Content from './components/content/content.jsx'
+import HomeworkLogin from './components/HomeworkLogin/HomeworkLogin.jsx'
+import Homeworkadmin from './components/Homeworkadmin/Homeworkadmin.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <Content/>
   },
   {
     path: "/information",
     element: <Information/>
   },
   {
-    path: "login",
+    path: "/homework",
+    element: <HomeWork/>
+  },
+  {
+    path: "/homeworklogin",
+    element: <HomeworkLogin/>
+  },
+  {
+    path: "/homeworkadmin",
+    element: <Homeworkadmin/>
+  },
+  {
+    path: "/login",
     element: <Login/>
   }
 ])

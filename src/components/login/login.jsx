@@ -1,75 +1,101 @@
-import React, { useEffect,  useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import loginstyle from "./Login.module.css"
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 // import axios from 'axios'
 
 
 function Login() {
-  const token = localStorage.getItem("tokenuser");
+  
+  const token = localStorage.getItem("tokenuser")
   const navigator = useNavigate();
 
   if(token) {
-    navigator('/home')
+    navigator('/')
   }
 
 
-  const [Dataform, setdataform] = useState({
-    username: '',
-    password : ''
-  })
+  const [username, setusername] = useState("")
+  const [password, setpassword] = useState("")
+
+  async function checklogin(res) {
+		console.log(res)
+		const Status = res.data.Status 
+		if(Status === "no_username") {
+			toast.error("not is a username")
+			setusername("")
+			setpassword("")
+		}else if(Status === "password is incorrect") {
+			toast.error("password is incorrect")
+			setpassword("")
+		}else if(Status === "Success") {
+			toast.success("Login Success")
+			setTimeout(() => {
+				window.localStorage.setItem("loginhomework", res.data.username)
+				navigator("/homework")
+			}, 2000)
+		}
+	}
+
+
+	async function submitloginhomework(e) {
+		e.preventDefault();
+		// toast.success("Success")//err
+		// setusername("")
+		try{
+			await axios.post('https://apipoomrelax.onrender.com/loginhomework', {username, password})
+			.then(res => {
+				checklogin(res)
+			})
+			.catch(err => console.log(err))
+		}
+
+		catch(err) {
+			console.log(err)
+		}
+  }
 
 
   const proceedLogin = (e) => {
     e.preventDefault();
     if(validate()) {
       // axios.post('http://localhost:3000/user')
-      if(Dataform.username === 'poomrelax') {
-        if(Dataform.password === '11699') {
-          alert("Login successfully")
-          localStorage.setItem('tokenuser', 'poomrelax')
-          navigator('/')
-        }else{
-          alert("รหัสผ่านไม่ถูกต้อง")
-          
-        }
-      }else{
-        alert("username ไม่ถูกต้อง")
-
-      }
+      submitloginhomework(e)
     }
   }
 
   const validate = () => {
     let result = true;
-    if(Dataform.username === '' || Dataform.username === null) {
+    if(username === '' || username === null) {
       result = false;
       toast.warning('โปรดใส่username')
     }
-    if(Dataform.password === '' || Dataform.password === null) {
+    if(password === '' || password === null) {
       result = false;
       toast.warning('โปรดใส่password')
     }
     return result;
   }
-  
+
   return (
-   <>
-   <form onSubmit={proceedLogin}>
-    <div className={loginstyle.container}>
-     <div className={loginstyle.content}>
-      <h2>Login/เข้าสู่ระบบ</h2>
-        <div className={loginstyle.input}>
-          <input type="text" value={Dataform.username} placeholder='username'  onChange={e => setdataform({...Dataform, username: e.target.value})}/>
-          <input type="password" value={Dataform.password} placeholder='password'  onChange={e => setdataform({...Dataform, password: e.target.value})}/>
+    <>
+    <ToastContainer/>
+      <form onSubmit={proceedLogin}>
+        <div className={loginstyle.container}>
+          <div className={loginstyle.content}>
+            <h2>Login/เข้าสู่ระบบ</h2>
+            <div className={loginstyle.input}>
+              <input type="text" value={username} placeholder='username' onChange={e => setusername(e.target.value)} />
+              <input type="password" value={password} placeholder='password' onChange={e => setpassword(e.target.value)} />
+            </div>
+            <div className={loginstyle.btn}>
+              <button type='submit'>SUBMIT/ตกลง</button>
+            </div>
+          </div>
         </div>
-        <div className={loginstyle.btn}>
-          <button type='submit'>SUBMIT/ตกลง</button>
-        </div>
-     </div>
-    </div>
-    </form>
-   </>
+      </form>
+    </>
   )
 }
 

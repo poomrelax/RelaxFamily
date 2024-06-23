@@ -9,7 +9,7 @@ function Nav() {
   const navigate = useNavigate()
 
   const logout = () => {
-    window.localStorage.removeItem("tokenuser")
+    window.localStorage.removeItem("loginhomework")
     navigate('/login')
   }
 
@@ -22,6 +22,7 @@ function Nav() {
         <ul>
           <Link className='li' to="/">Home</Link>
           <Link className='li'to="/information">Information</Link>
+          <Link className='li'to="/homework">Home Work</Link>
         </ul>
       <button className='endtext' onClick={() => logout()}>Logout</button>
       </div>

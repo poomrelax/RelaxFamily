@@ -3,35 +3,44 @@ import infor from "./information.module.css"
 import BarLoader from "react-spinners/BarLoader";
 import Nav from '../Nav/Nav'
 import axios from 'axios';
+import p from './p.jpg'
+import a from './a.jpg'
+import new_profile from './new_profile.jpg'
 
 
 function Information() {
-    const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(true);
     const [Data, setData] = useState([])
 
     async function fetchData() {
-      const res = await fetch("https://apipoomrelax.onrender.com/infor/");
-      res
-        .json()
-        .then((res) => setData(res))
-        .catch((err) => console.log(err));
+      try{
+        await axios.get('https://apipoomrelax.onrender.com/infor')
+          .then(res => {
+            console.log(res)
+            setData(res.data)
+          })
+      }
+      catch(err) {
+        console.log(err)
+      }
+
+      finally{
+        setloading(false)
+      }
     }
 
-    fetchData()
+    
   
 
     useEffect(() => {
-        setloading(true); //true
-        setTimeout(() => {
-          setloading(false);
-        }, [3000]);
+      fetchData()
       }, []);    
 
   return (
     <>
     {loading ? (
       <div className="loader">
-        <h2>Loading...</h2>
+        <h2 style={{color : "#fff"}}>Loading...</h2>
         <BarLoader color={"#fde616"} loading={loading} size={20} />
       </div>
     ) : (
@@ -39,11 +48,13 @@ function Information() {
       <Nav/>
       <div className={infor.container}>
         <div className={infor.profile}>
+        {/* <img src={p}/>  */}
         <h3>Information</h3>
-           {Data.map((user) => {
+           {Data.map((user ) => {
+            // const image = parseInt(user.image)
             return (
                 <>
-                <img src={user.image}/>
+                <img src={user.image}/> 
                 <h2>{user.name}</h2>
                 <p>ชื่อ : {user.fname}</p>
                 <p>นามสกุล : {user.lname}</p>

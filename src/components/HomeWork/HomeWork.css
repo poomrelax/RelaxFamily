@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Poetsen+One&display=swap');
+
+html{
+    overflow: hidden auto;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    /* max-height: 10000000000px; */
+    background: linear-gradient(67deg, rgb(206, 2, 179), rgb(233, 7, 7), rgb(15, 177, 15));
+
+    /* margin: 0 1rem; */
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1rem;
+    /* height: 100%; */
+    transition: all .5s ease-in-out;
+}
+
+.container .card{
+    width: 75%;
+    height: 34%;
+    margin: 0 1rem;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.container .card .box{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 1.5rem;
+    background: #817cc5;
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+    /* backdrop-filter: blur(10px); */
+    /* border: 1px solids red; */
+}
+.container .card .box h5{
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.container .card .box h3{
+    color: rgb(43, 248, 43);
+    text-shadow: -1px 1px 0 #000,
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
+    font-family: "Poetsen One", sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.container .card .box h4{
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    font-size: 13px;
+    margin-top: 14px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.container .card .box p{
+    margin-top: 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+
+.container .card .box .btn{
+    margin-top: 1.5rem;
+}
+
+.container .card .box .btn .btn-delet{
+    padding: 0.5rem;
+    color:rgb(0, 65, 0);
+    background: rgb(6, 138, 6);
+    border: 2px solid rgb(5, 77, 5);
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: .3s ease-in;
+}
+
+.container .card .box .btn .btn-delet:hover{
+    transform: scale(1.2);
+    background: rgb(40, 228, 40);
+}
+
+.container .card .box .btn .btn-loadding{
+    padding: 0.5rem;
+    color:#000;
+    background: #777777;
+    border: 2px solid #000;
+    outline: none;
+    font-size: 20px;
+    cursor: no-drop;
+    font-weight: 600;
+    /* border-radius: 10px; */
+    /* transition: .3s ease-in; */
+}
+
+/* box_Already */
+
+.box_Already{
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: #a8a8a8;
+    border-radius: 10px;
+    position: relative;
+    cursor: no-drop;
+}
+
+.container .card .box_Already h3{
+    color: #a8a8a8;
+    text-shadow: -1px 1px 0 #000,
+                1px 1px 0 #000,
+                1px -1px 0 #000,
+                -1px -1px 0 #000;
+    font-family: "Poetsen One", sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.container .card .box_Already h5{
+    color: #777777;
+}
+
+
+.container .card .box_Already h4{
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    font-size: 20px;
+    margin-top: 14px;
+    text-align: center;
+    font-weight: 600;
+    color: #777777;
+}
+
+.container .card .box_Already p{
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #a8a8a8;
+}
+
+.container .card .box_Already .btn{
+    margin-top: 1.5rem;
+}
+
+.container .card .box_Already .btn button{
+    padding: 0.5rem;
+    color:#a8a8a8;
+    background: #8b8b8b;
+    border: 2px solid #a8a8a8;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: .3s ease-in;
+}
+
+.container .card .box_Already img{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    /* border: 1px solid red; */
+    animation-name: image;
+    /* animation-delay: .3s; */
+    animation-iteration-count: 1;
+    animation-duration: .5s;
+}
+
+@keyframes image {
+    0%{
+        transform: scale(4);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container .card{
+        width: 50%;
+        height: 33%;
+        /* margin: 0 1rem; */
+        margin-bottom: 2rem;
+        /* border: 1px solid red; */
+        /* display: flex; */
+        /* justify-content: center; */
+        
+    }
+    
+    .container .card .box{
+        /* margin-bottom: 6rem; */
+        /* border: 1px solid red; */
+        /* display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        padding: 1.5rem;
+        background: #817cc5; 
+        /* border-radius: 10px;
+        margin-top: 2rem;
+        transition: all .5s ease-in-out; */
+        /* backdrop-filter: blur(10px); */
+        /* border: 1px solids red; */
+    }
+}

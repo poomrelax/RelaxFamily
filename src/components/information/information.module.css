@@ -8,7 +8,9 @@
     color: #fff;
 }
 
-body{
+
+.container{
+    color: #fff;
     background: url('https://plus.unsplash.com/premium_photo-1668989820410-6c02365835af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8');
 }
 
@@ -23,6 +25,8 @@ body{
     font-size: 30px;
     font-weight: 600;
     margin-top: 1rem;
+    color: #fff;
+    color: #fff;
 }
 
 .container .profile img{
@@ -36,6 +40,7 @@ body{
 .container .profile h2{
     margin-top: 15px;
     font-weight: 500;
+    color: #fff;
 }
 
 .container .profile h2{
@@ -44,6 +49,7 @@ body{
 }
 .container .profile p{
     margin-top: 1rem;
+    color: #fff;
 }
 
 .container .profile .detail{
