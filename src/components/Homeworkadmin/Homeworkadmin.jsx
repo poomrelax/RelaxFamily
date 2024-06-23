@@ -77,6 +77,7 @@ function Homeworkadmin() {
         toast.success("เพิ่มการบ้านแล้ว")
         try{
           await axios.post('https://apipoomrelax.onrender.com/homework', {subject, desc})
+          setpopup(false)
           fetchhomework()
       }
 
