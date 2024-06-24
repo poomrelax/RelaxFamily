@@ -13,8 +13,6 @@ function App() {
 
   if(!loginhomework) {
     navigator('/login')
-  }else if(loginhomework) {
-    navigator('/homework')
   }
 
   

@@ -12,6 +12,8 @@ function Content() {
 
   if(!login) {
     navigator("/login")
+  }else if(login) {
+    navigator('/homework')
   }
 
   async function fetchData() {
