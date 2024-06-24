@@ -8,11 +8,13 @@ import Login from "./components/login/login";
 
 function App() {
   
-  const token = localStorage.getItem("tokenuser");
+  const loginhomework = localStorage.getItem("loginhomework");
   const navigator = useNavigate();
 
-  if(!token) {
+  if(!loginhomework) {
     navigator('/login')
+  }else if(loginhomework) {
+    navigator('/homework')
   }
 
   
