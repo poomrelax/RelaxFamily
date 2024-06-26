@@ -86,8 +86,8 @@ function Login() {
           <div className={loginstyle.content}>
             <h2>Login/เข้าสู่ระบบ</h2>
             <div className={loginstyle.input}>
-              <input type="text" value={username} placeholder='username' onChange={e => setusername(e.target.value)} />
-              <input type="password" value={password} placeholder='password' onChange={e => setpassword(e.target.value)} />
+              <input type="text" id="username" value={username} placeholder='username' onChange={e => setusername(e.target.value)} />
+              <input type="password" id="password" value={password} placeholder='password' onChange={e => setpassword(e.target.value)} />
             </div>
             <div className={loginstyle.btn}>
               <button type='submit'>SUBMIT/ตกลง</button>

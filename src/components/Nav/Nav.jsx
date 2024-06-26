@@ -20,9 +20,9 @@ function Nav() {
       </div>
       <div className="end">
         <ul>
-          <Link className='li' to="/">Home</Link>
-          <Link className='li'to="/information">Information</Link>
-          <Link className='li'to="/homework">Home Work</Link>
+          <Link className='li' to="/" id="home">Home</Link>
+          <Link className='li'to="/information" id="Information">Information</Link>
+          <Link className='li'to="/homework" id="homework">Home Work</Link>
         </ul>
       <button className='endtext' onClick={() => logout()}>Logout</button>
       </div>
