@@ -8,11 +8,11 @@ import axios from 'axios';
 
 function Login() {
   
-  const token = localStorage.getItem("tokenuser")
+  const token = localStorage.getItem("loginhomework")
   const navigator = useNavigate();
 
   if(token) {
-    navigator('/')
+    navigator('/homework')
   }
 
 
@@ -90,7 +90,7 @@ function Login() {
               <input type="password" id="password" value={password} placeholder='password' onChange={e => setpassword(e.target.value)} />
             </div>
             <div className={loginstyle.btn}>
-              <button type='submit'>SUBMIT/ตกลง</button>
+              <button type='submit' id="submit">SUBMIT/ตกลง</button>
             </div>
           </div>
         </div>

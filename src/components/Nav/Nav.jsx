@@ -20,7 +20,7 @@ function Nav() {
       </div>
       <div className="end">
         <ul>
-          <Link className='li' to="/" id="home">Home</Link>
+          <Link className='li' to="/content" id="home">Home</Link>
           <Link className='li'to="/information" id="Information">Information</Link>
           <Link className='li'to="/homework" id="homework">Home Work</Link>
         </ul>
