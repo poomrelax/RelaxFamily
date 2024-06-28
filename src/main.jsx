@@ -14,7 +14,7 @@ import Homeworkadmin from './components/Homeworkadmin/Homeworkadmin.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/content",
+    path: "/",
     element: <Content/>
   },
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     element: <Homeworkadmin/>
   },
   {
-    path: "/",
+    path: "/login",
     element: <Login/>
   }
 ])

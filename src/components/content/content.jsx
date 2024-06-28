@@ -4,17 +4,18 @@ import BarLoader from "react-spinners/BarLoader";
 import { useNavigate } from 'react-router-dom';
 import Nav from "../Nav/Nav"
 function Content() {
-
-  const [data, setdata] = useState([]);
-  const [loading, setloading] = useState(true);
   const navigator = useNavigate();
   const login = localStorage.getItem("loginhomework")
 
   if(!login) {
-    navigator("/login")
+    navigator('/login')
   }else if(login) {
     navigator('/homework')
   }
+
+  const [data, setdata] = useState([]);
+  const [loading, setloading] = useState(true);
+ 
 
   async function fetchData() {
     try{
