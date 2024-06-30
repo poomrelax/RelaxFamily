@@ -17,6 +17,8 @@ function HomeWork() {
 
   if(loginhomework === "poomrelax") {
     navigator("/homeworkadmin")
+  }else if(!loginhomework) {
+    navigator('/login')
   }
   
 
