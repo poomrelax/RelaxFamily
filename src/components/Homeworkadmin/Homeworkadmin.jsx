@@ -19,13 +19,13 @@ function Homeworkadmin() {
     const navigator = useNavigate();
 
 
-    if(loginhomework != "poomrelax") {
+    if(loginhomework != "poom") {
       navigator("/homework")
     }
 
     const fetchhomework = async () => {
         try{
-            await axios.get('https://apipoomrelax.onrender.com/homework')
+            await axios.get('https://node-api-production-95c1.up.railway.app/homework')
             .then(res => {
                 setitems(res.data);
                 console.log(res)
@@ -76,7 +76,7 @@ function Homeworkadmin() {
       }else{
         toast.success("เพิ่มการบ้านแล้ว")
         try{
-          await axios.post('https://apipoomrelax.onrender.com/homework', {subject, desc})
+          await axios.post('https://node-api-production-95c1.up.railway.app/homework', {subject, desc})
           setpopup(false)
           fetchhomework()
       }
@@ -92,7 +92,7 @@ function Homeworkadmin() {
     async function deletetag(id) {
       try{
         setdeletloadding(true)
-        await axios.delete('https://apipoomrelax.onrender.com/homework/' + id)
+        await axios.delete('https://node-api-production-95c1.up.railway.app/homework/' + id)
       }
     
       catch(err) {

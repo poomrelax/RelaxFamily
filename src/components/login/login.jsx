@@ -27,10 +27,12 @@ function Login() {
 		if(Status === "no_username") {
 			toast.error("not is a username")
 			setusername("")
+      setsubmitloading(false)
 			setpassword("")
 		}else if(Status === "password is incorrect") {
 			toast.error("password is incorrect")
 			setpassword("")
+      setsubmitloading(false)
 		}else if(Status === "Success") {
 			toast.success("Login Success")
 			setTimeout(() => {
@@ -47,7 +49,7 @@ function Login() {
 		// setusername("")
 		try{
       setsubmitloading(true)
-			await axios.post('https://apipoomrelax.onrender.com/loginhomework', {username, password})
+			await axios.post('https://node-api-production-95c1.up.railway.app/loginhomework', {username, password})
 			.then(res => {
 				checklogin(res)
 			})

@@ -38,7 +38,7 @@ function HomeworkLogin() {
 		// toast.success("Success")//err
 		// setusername("")
 		try{
-			await axios.post('https://apipoomrelax.onrender.com/loginhomework', {username, password})
+			await axios.post('https://node-api-production-95c1.up.railway.app/loginhomework', {username, password})
 			.then(res => {
 				checklogin(res)
 			})
@@ -87,7 +87,6 @@ function HomeworkLogin() {
 				</div>
 				<button class="button login__submit" type='submit'>
 					<span class="button__text">Log In Now</span>
-					<i style={{color : "#fff"}} class="button__icon fas fa-chevron-right"></i>
 				</button>				
 			</form>
 			<div class="social-login">
