@@ -24,7 +24,7 @@ function Homeworkadmin() {
     }
 
     const fetchhomework = async () => {
-      const test = ""
+      
         try{
             await axios.get('https://node-api-production-95c1.up.railway.app/homework')
             .then(res => {
