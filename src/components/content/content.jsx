@@ -4,7 +4,7 @@ import BarLoader from "react-spinners/BarLoader";
 import { useNavigate } from 'react-router-dom';
 import Nav from "../Nav/Nav"
 function Content() {
-  const loginhomework = localstorage.getItem('loginhomework')
+  const loginhomework = localStorage.getItem('loginhomework')
   const navigator = useNavigate();
 
   if(!loginhomework) {
