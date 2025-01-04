@@ -25,7 +25,7 @@ function HomeWork() {
 
     const fetchhomework = async () => {
       try{
-          await axios.get('https://node-api-production-95c1.up.railway.app/homework')
+          await axios.get('node-api-production-d005.up.railway.app/homework')
           .then(res => {
               setitems(res.data);
               console.log(res)
@@ -50,7 +50,7 @@ function HomeWork() {
 async function deletetag(id) {
   try{
     setdeletloadding(true)
-    await axios.delete('https://node-api-production-95c1.up.railway.app/homework/' + id)
+    await axios.delete('node-api-production-d005.up.railway.app/homework/' + id)
   }
 
   catch(err) {
