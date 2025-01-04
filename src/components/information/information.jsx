@@ -14,7 +14,7 @@ function Information() {
 
     async function fetchData() {
       try{
-        await axios.get('https://apipoomrelax.onrender.com/infor')
+        await axios.get('https://node-api-production-d005.up.railway.app/infor')
           .then(res => {
             console.log(res)
             setData(res.data)
