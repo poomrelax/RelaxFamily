@@ -49,7 +49,7 @@ function Login() {
 		// setusername("")
 		try{
       setsubmitloading(true)
-			await axios.post('https://node-api-production-95c1.up.railway.app/loginhomework', {username, password})
+			await axios.post('https://node-api-production-d005.up.railway.app/loginhomework', {username, password})
 			.then(res => {
 				checklogin(res)
 			})
