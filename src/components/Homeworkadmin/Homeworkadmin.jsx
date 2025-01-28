@@ -15,21 +15,26 @@ function Homeworkadmin() {
     const [desc, setdetall] = useState("")
     const [popup, setpopup] = useState(false)
     const [deletloadding, setdeletloadding] = useState(false)
-    const loginhomework = localStorage.getItem("loginhomework")
+    const loginhomework = JSON.parse(localStorage.getItem("loginhomework"))
     const navigator = useNavigate();
+ 
 
 
-    if(loginhomework != "poom") {
-      navigator("/homework")
+    // if(loginhomework != "poom") {
+    //   navigator("/homework")
+    // }
+
+    if(loginhomework.user === "family") {
+      navigator('/homework')
     }
 
     const fetchhomework = async () => {
       
         try{
-            await axios.get('https://node-api-production-95c1.up.railway.app/homework')
+            await axios.get('http://localhost:2553/mainhomework/homework/' + loginhomework.id)
             .then(res => {
                 setitems(res.data);
-                console.log(res)
+                console.log(res.data)
             })
         }
   
@@ -75,10 +80,10 @@ function Homeworkadmin() {
       }else if(desc === "") {
         toast.error("กรุณาใส่เรื่อง")
       }else{
-        toast.success("เพิ่มการบ้านแล้ว")
         try{
-          await axios.post('https://node-api-production-95c1.up.railway.app/homework', {subject, desc})
+          await axios.post('http://localhost:2553/mainhomework/homework/' + loginhomework.id, {subject, desc})
           setpopup(false)
+          toast.success("เพิ่มการบ้านแล้ว")
           fetchhomework()
       }
 
@@ -90,10 +95,14 @@ function Homeworkadmin() {
       }
     } 
 
-    async function deletetag(id) {
+    async function deletetag(idUser ,idHomework) {
+
+      // console.log(idUser)
+      // console.log(idHomework)
+
       try{
         setdeletloadding(true)
-        await axios.delete('https://node-api-production-95c1.up.railway.app/homework/' + id)
+        await axios.delete('http://localhost:2553/mainhomework/homework/' + idUser + '/' + idHomework)
       }
     
       catch(err) {
@@ -140,7 +149,7 @@ function Homeworkadmin() {
                         </>
                        ) : (
                         <> 
-                          <button className='btn-delet' onClick={() => deletetag(work._id)}>finished</button>
+                          <button className='btn-delet' onClick={() => deletetag(loginhomework.id, work.id)}>finished</button>
                         </>
                       )} 
                     </div>

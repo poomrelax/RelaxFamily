@@ -22,24 +22,43 @@ function Login() {
   const [submitloading, setsubmitloading] = useState(false)
 
   async function checklogin(res) {
-		console.log(res)
-		const Status = res.data.Status 
-		if(Status === "no_username") {
-			toast.error("not is a username")
-			setusername("")
+		const data = res.data
+    console.log(data)
+
+    if(data.message === "loginAdmin Success") {
+      toast.success("เข้าสู่ระบบ สำเร็จ")
+      localStorage.setItem("loginhomework", JSON.stringify({
+        "id": data.id,
+        "user": data.user
+      }))
+      setTimeout(() => {
+        navigator('/homeworkadmin')
+        setsubmitloading(false)
+      }, 2000)
+    }else if(data.message === "loginAdmin fail") {
+        toast.error("รหัสไม่ถูกต้อง")
+      setpassword("")
       setsubmitloading(false)
-			setpassword("")
-		}else if(Status === "password is incorrect") {
-			toast.error("password is incorrect")
-			setpassword("")
+    }else if(data.status === "no_password") {
+      toast.error("รหัสไม่ถูกต้อง")
+      setpassword("")
       setsubmitloading(false)
-		}else if(Status === "Success") {
-			toast.success("Login Success")
-			setTimeout(() => {
-				window.localStorage.setItem("loginhomework", res.data.username)
-				navigator("/homework")
-			}, 2000)
-		}
+    }else if(data.status === "no_user") {
+      toast.error("ชื่อuser ไม่ถูกต้องง")
+      setusername("") 
+      setpassword("")
+      setsubmitloading(false)
+    }else if(data.message === "loginfamily success") {
+      toast.success("เข้าสู่ระบบ สำเร็จ")
+      localStorage.setItem("loginhomework", JSON.stringify({
+        "id": data.id,
+        "user": data.user
+      }))
+      setTimeout(() => {
+        navigator('/homework')
+        setsubmitloading(false)
+      }, 2000)
+    }
 	}
 
 
@@ -47,9 +66,15 @@ function Login() {
 		e.preventDefault();
 		// toast.success("Success")//err
 		// setusername("")
+
+    const data = {
+      username: username,
+      password: password
+    }
+
 		try{
       setsubmitloading(true)
-			await axios.post('https://node-api-production-95c1.up.railway.app/loginhomework', {username, password})
+			await axios.post('http://localhost:2553/mainhomework/login', data)
 			.then(res => {
 				checklogin(res)
 			})
@@ -108,6 +133,9 @@ function Login() {
               <button type='submit' id="submit">SUBMIT/ตกลง</button>
               </>
             )}
+            </div>
+            <div className={loginstyle.register}>
+              <p>ต้องการสมัครใช่ไหม </p><a href="/register">สมัครสมาชิค</a>
             </div>
           </div>
         </div>

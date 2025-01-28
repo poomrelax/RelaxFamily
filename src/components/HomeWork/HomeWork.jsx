@@ -12,20 +12,18 @@ function HomeWork() {
   const [deletloadding, setdeletloadding] = useState(false)
 
   const navigator = useNavigate();
-  const loginhomework = localStorage.getItem("loginhomework")
+  const loginhomework = JSON.parse(localStorage.getItem("loginhomework"))
 
 
-  if(loginhomework === "poom") {
-    navigator("/homeworkadmin")
-  }else if(!loginhomework) {
-    navigator('/login')
+  if(loginhomework.user === "admin") {
+    navigator('/homeworkadmin')
   }
   
 
 
     const fetchhomework = async () => {
       try{
-          await axios.get('https://node-api-production-95c1.up.railway.app/homework')
+          await axios.get('http://localhost:2553/mainhomework/homework/' + loginhomework.id)
           .then(res => {
               setitems(res.data);
               console.log(res)

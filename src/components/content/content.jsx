@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Nav from "../Nav/Nav"
 function Content() {
   const navigator = useNavigate();
-  navigator('/login')
   const login = localStorage.getItem("loginhomework")
-   if(login) {
-    navigator('/homework')
+   if(!login) {
+    navigator('/login')
   }
 
   const [data, setdata] = useState([]);

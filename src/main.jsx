@@ -10,6 +10,7 @@ import HomeWork from './components/HomeWork/HomeWork.jsx'
 import Content from './components/content/content.jsx'
 import HomeworkLogin from './components/HomeworkLogin/HomeworkLogin.jsx'
 import Homeworkadmin from './components/Homeworkadmin/Homeworkadmin.jsx'
+import Register from './components/Register/Register.jsx'
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/homeworklogin",
     element: <HomeworkLogin/>
+  },
+  {
+    path: "/register",
+    element: <Register/>
   },
   {
     path: "/homeworkadmin",
