@@ -12,6 +12,7 @@ function Homeworkadmin() {
     const [loading, setloading] = useState(true);
     const [homework, setitems] = useState([])
     const [subject, setsubject] = useState("")
+    const [other, setother] = useState("")
     const [desc, setdetall] = useState("")
     const [popup, setpopup] = useState(false)
     const [deletloadding, setdeletloadding] = useState(false)
@@ -24,14 +25,18 @@ function Homeworkadmin() {
     //   navigator("/homework")
     // }
 
-    if(loginhomework.user === "family") {
-      navigator('/homework')
-    }
+  const url = 'https://node-api-production-4fa0.up.railway.app/'
+
+  if(!loginhomework) {
+    navigator('/login')
+  }else if(loginhomework.user === "family") {
+    navigator('/homework')
+  }
 
     const fetchhomework = async () => {
       
         try{
-            await axios.get('http://localhost:2553/mainhomework/homework/' + loginhomework.id)
+            await axios.get(url + 'mainhomework/homework/' + loginhomework.id)
             .then(res => {
                 setitems(res.data);
                 console.log(res.data)
@@ -48,29 +53,43 @@ function Homeworkadmin() {
   
       }
 
+      window.onload = () => {
+        const other_id = window.document.getElementById('other_id')
+        alert("success")
+      }
+
+      function checkselect(text) {
+        console.log(text)
+        if(text == 'other') {
+          other_id.style.display = 'grid'
+        }else{
+          other_id.style.display = 'none'
+          setsubject(text)
+        }
+      }
+
   
   
 
        const selecthomework = [
         {value: 'คณิตศาสตร์', label: 'คณิตศาสตร์'},
-        {value: 'ภาษาอังกฤษ', label: 'ภาษาอังกฤษ'},
-        {value: 'การงานอาชีพ', label: 'การงานอาชีพ'},
+        {value: 'ฟิสิกส์', label: 'ฟิสิกส์'},
+        {value: 'ชีววิทยา', label: 'ชีววิทยา'},
+        {value: 'เคมี', label: 'เคมี'},
         {value: 'สังคมศึกษา', label: 'สังคมศึกษา'},
+        {value: 'คณิตศาสตร์', label: 'คณิตศาสตร์'},
+        {value: 'อังกฤษ', label: 'อังกฤษ'},
+        {value: 'ชุมนุม', label: 'ชุมนุม'},
+        {value: 'วิทพลัง10', label: 'วิทพลัง10'},
+        {value: 'พละ', label: 'พละ'},
         {value: 'ภาษาไทย', label: 'ภาษาไทย'},
-        {value: 'กิจกรรมชุมนุม', label: 'กิจกรรมชุมนุม'},
-        {value: 'พละศึกษา', label: 'พละศึกษา'},
-        {value: 'กิจกรรมแนะแนว', label: 'กิจกรรมแนะแนว'},
-        {value: 'ภาษาอังกฤษ เพิ่มเติม', label: 'ภาษาอังกฤษ เพิ่มเติม'},
-        {value: 'วิทยาศาสตร์การคำนวณ', label: 'วิทยาศาสตร์การคำนวณ'},
-        {value: 'อบรมระดับ', label: 'อบรมระดับ'},
-        {value: 'เพิ่มเติม 1', label: 'เพิ่มเติม 1'},
-        {value: 'เพิ่มเติม 2', label: 'เพิ่มเติม 2'},
-        {value: 'กิจกรรม ลูกเสือ', label: 'กิจกรรม ลูกเสือ'},
+        {value: 'อังกฤษเสริม', label: 'อังกฤษเสริม'},
         {value: 'ประวัติศาสตร์', label: 'ประวัติศาสตร์'},
-        {value: 'ดนตรี', label: 'ดนตรี'},
-        {value: 'สุขศึกษา', label: 'สุขศึกษา'},
-        {value: 'ลดเวลาเรียนเพิ่มเวลารู้', label: 'ลดเวลาเรียนเพิ่มเวลารู้'},
-        {value: 'วิทยาศาสตร์', label: 'วิทยาศาสตร์'}
+        {value: 'คณิตศาสตร์เสริม', label: 'คณิตศาสตร์เสริม'},
+        {value: 'วิทยาการคำนวณ', label: 'วิทยาการคำนวณ'},
+        {value: 'IS', label: 'IS'},
+        {value: 'other', label: 'อื่นๆ...'},
+
     ]
 
     async function submit(e) {
@@ -81,10 +100,11 @@ function Homeworkadmin() {
         toast.error("กรุณาใส่เรื่อง")
       }else{
         try{
-          await axios.post('http://localhost:2553/mainhomework/homework/' + loginhomework.id, {subject, desc})
+          await axios.post(url + 'mainhomework/homework/' + loginhomework.id, {subject, desc})
           setpopup(false)
           toast.success("เพิ่มการบ้านแล้ว")
           fetchhomework()
+          // console.log(subject + ' ' + desc)
       }
 
       catch(e){
@@ -102,7 +122,7 @@ function Homeworkadmin() {
 
       try{
         setdeletloadding(true)
-        await axios.delete('http://localhost:2553/mainhomework/homework/' + idUser + '/' + idHomework)
+        await axios.delete(url + 'mainhomework/homework/' + idUser + '/' + idHomework)
       }
     
       catch(err) {
@@ -117,6 +137,13 @@ function Homeworkadmin() {
 
     useEffect(() => {
       fetchhomework();
+      // const other_id = window.document.getElementById('other_id')
+      // if(other_id) {
+      //   console.log("success")
+      // }else{
+      //   console.log(" no success")
+
+      // }
   }, [])
 
   return (
@@ -164,7 +191,11 @@ function Homeworkadmin() {
                 <Popup trigger={popup} settrigger={setpopup}>
                     <div className="input-form">
                       <label>Subject</label>
-                      <Select onChange={(e) => setsubject(e.value)} options={selecthomework} styles={Select}/>
+                      <Select onChange={(e) => checkselect(e.value)} options={selecthomework} styles={Select}/>
+                    </div>
+                    <div className="input-form" id="other_id" style={{display: 'none'}}>
+                      <label>อื่นๆ</label>
+                     <input type="text" placeholder="อื่นๆ" onChange={(e) => setsubject(e.target.value)}/>
                     </div>
                     <div className="input-form">
                       <label>Detall</label>

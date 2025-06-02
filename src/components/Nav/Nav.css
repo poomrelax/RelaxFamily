@@ -21,6 +21,45 @@
     z-index: 10000;
 }
 
+.Nav .dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    position: relative;
+    /* border: 1px solid red; */
+    /* text-align: center; */
+
+    & .btn-dropdown {
+        /* padding: 5px 10px; */
+        font-size: 40px;
+        text-align: center;
+        background: transparent;
+        margin-top: 5px;
+
+        border:  none;
+        cursor: pointer;
+        transition: .3s ease;
+        padding: 0;
+    }
+
+    & .content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        border: 1px solid red;
+        z-index: 1000;
+        top: 0;
+
+        & a {
+            margin: 5px 0;
+        }
+    }
+}
+
+
+
 .Nav .logo{
     /* border: 1px solid red; */
     text-align: center;

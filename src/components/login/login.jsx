@@ -12,6 +12,8 @@ function Login() {
   const token = localStorage.getItem("loginhomework")
   const navigator = useNavigate();
 
+  const url = 'https://node-api-production-4fa0.up.railway.app/mainhomework/'
+
   if(token) {
     navigator('/homework')
   }
@@ -74,7 +76,7 @@ function Login() {
 
 		try{
       setsubmitloading(true)
-			await axios.post('http://localhost:2553/mainhomework/login', data)
+			await axios.post(url + "login", data)
 			.then(res => {
 				checklogin(res)
 			})

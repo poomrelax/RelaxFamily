@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import register from './Register.module.css'
+import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import FadeLoader from "react-spinners/FadeLoader";
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,6 +8,8 @@ import axios from 'axios';
 
 
 function Register() {
+
+    const navigate = useNavigate()
 
     const [Username, setUsername] = useState("")
     const [Password, setPassword] = useState("")
@@ -16,41 +19,70 @@ function Register() {
     const [submitLodding, setsubmitLodding] = useState(false)
     const [IdCreat, setIdCreat] = useState("")
 
+     const url = 'https://node-api-production-4fa0.up.railway.app/'
+
     // console.log(IdCreat)
 
 
 
-    async function submit() {
-        setsubmitLodding(true)
-        if(Username === "" || Username === null) {
-            toast.warning("กรุณาใส่ username");
-            setsubmitLodding(false)
-        }else  if(Password === "" || Password === null) {
-            toast.warning("กรุณาใส่ Password");
-            setsubmitLodding(false)
-        }else{
-
-            const data = {
-                useradmin: Username,
-                passwordAdmin: Password
-            }
-
-            const adduser = document.getElementById('adduser');
-            const addFamily = document.getElementById('addFamily');
-
-            await axios.post('http://localhost:2553/mainhomework/create', data).then((res) => {
-                setIdCreat(JSON.stringify(res.data))
-                toast.success("success")
-                adduser.style.display = 'none'
-                addFamily.style.display = 'block'
+    async function submit(select) {
+        const id = ""
+        if(select === "user") {
+                setsubmitLodding(true)
+            if(Username === "" || Username === null) {
+                toast.warning("กรุณาใส่ username");
                 setsubmitLodding(false)
+            }else  if(Password === "" || Password === null) {
+                toast.warning("กรุณาใส่ Password");
+                setsubmitLodding(false)
+            }else{
 
+                const data = {
+                    useradmin: Username,
+                    passwordAdmin: Password
+                }
+
+                const adduser = document.getElementById('adduser');
+                const addFamily = document.getElementById('addFamily');
+
+                await axios.post(url + 'mainhomework/create', data).then((res) => {
+                    setIdCreat(res.data.id)
+                    toast.success("success")
+                    adduser.style.display = 'none'
+                    addFamily.style.display = 'block'
+                    setsubmitLodding(false)
+                    // console.log(id)
+                })
+
+               
+                // setsubmitLodding(false)
+                // adduser.style.display = 'none'
+                // addFamily.style.display = 'block'
+                
+            }
+        }else if(select === "family") {
+            setsubmitLodding(true)
+            await DataFamily.map((data, index) => {
+                // console.log(data.username + data.password + " " + index)
+                const datapost = {
+                    username: data.username,
+                    password: data.password
+                }
+
+               axios.post(url + 'mainhomework/family/' + IdCreat, datapost)
+                    .then(res => {
+                        // console.log('success')
+                        if(DataFamily.length === index + 1) {
+                            toast.success("สมัครสามชิค สำเร็จ")
+                            setTimeout(() => {
+                                navigate('/login')
+                                setsubmitLodding(false)
+                            }, 2000)
+                        }
+                        // toast.success("add " + data.username + " " + "success")
+                    })
             })
-
-            // setsubmitLodding(false)
-            // adduser.style.display = 'none'
-            // addFamily.style.display = 'block'
-            
+            // console.log(DataFamily)
         }
     }
 
@@ -64,13 +96,18 @@ function Register() {
         await setDataFamily([...DataFamily, data])
         setTask("")
         setTaskPassword("")
-        // console.log(DataFamily)
+        console.log(DataFamily)
     }
 
     const removeFamily = (id) => {
         const removeFamily = DataFamily.filter((item) => item.id !== id)
         setDataFamily(removeFamily)
+        console.log(DataFamily)
     }
+
+
+
+
 
   return (
     <>
@@ -95,7 +132,7 @@ function Register() {
                             </>
                         ): (
                             <>
-                                <button onClick={submit} className={register.btn_submit}>NEXT</button>
+                                <button onClick={() => submit("user")} className={register.btn_submit}>NEXT</button>
                             </>
                         )}
                 </div>
@@ -131,7 +168,7 @@ function Register() {
                             </>
                         ): (
                             <>
-                                <button onClick={submit} className={register.btn_submit}>Submit</button>
+                                <button onClick={() => submit("family")} className={register.btn_submit}>Submit</button>
                             </>
                         )}
             </div>

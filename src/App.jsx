@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import {FaArrowCircleUp} from 'react-icons/fa'; 
-import { Route, Link, Navigate, useNavigate } from "react-router-dom"
+import { FaArrowCircleUp } from "react-icons/fa";
+import { Route, Link, Navigate, useNavigate } from "react-router-dom";
 import Home from "./Home";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import Login from "./components/login/login";
 
 function App() {
-  
   const loginhomework = localStorage.getItem("loginhomework");
   const navigator = useNavigate();
 
-  if(!loginhomework) {
-    navigator('/login')
+  if (!loginhomework) {
+    navigator("/login");
   }
 
-  
+  navigator('/adminhomework')
+
   const [loading, setloading] = useState(false);
 
   useEffect(() => {
@@ -25,10 +25,8 @@ function App() {
     }, [3000]);
   }, []);
 
-  
   return (
     <>
-
       {loading ? (
         <div className="loader">
           <h2>Loading...</h2>
@@ -36,9 +34,9 @@ function App() {
         </div>
       ) : (
         <>
-        <div className="container">
-          <Home/>
-        </div>
+          <div className="container">
+            <Home />
+          </div>
         </>
       )}
     </>
@@ -46,4 +44,3 @@ function App() {
 }
 
 export default App;
- 

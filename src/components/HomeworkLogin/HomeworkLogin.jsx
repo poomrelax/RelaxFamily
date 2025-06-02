@@ -38,7 +38,7 @@ function HomeworkLogin() {
 		// toast.success("Success")//err
 		// setusername("")
 		try{
-			await axios.post('https://node-api-production-95c1.up.railway.app/loginhomework', {username, password})
+			await axios.post('https://node-api-production-4fa0.up.railway.app/loginhomework', {username, password})
 			.then(res => {
 				checklogin(res)
 			})
