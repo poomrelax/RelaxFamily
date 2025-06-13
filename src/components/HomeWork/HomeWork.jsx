@@ -14,7 +14,7 @@ function HomeWork() {
   const navigator = useNavigate();
   const loginhomework = JSON.parse(localStorage.getItem("loginhomework"))
 
-  const url = 'https://node-api-production-4fa0.up.railway.app/mainhomework/'
+  const url = 'https://node-api-production-a142.up.railway.app/mainhomework/'
 
   if(!loginhomework) {
     navigator('/login')
