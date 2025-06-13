@@ -18,7 +18,7 @@ function Family() {
     const navigate = useNavigate()
     const loginhomework = JSON.parse(localStorage.getItem('loginhomework'))
 
-    const url = 'https://node-api-production-4fa0.up.railway.app/'
+    const url = 'https://node-api-production-a142.up.railway.app'
 
     async function fetfamily() {
         setloadding(true)
