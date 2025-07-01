@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import qrcodestyle from './QrCode.module.css'
-import QrScanner from 'qr-scanner';
-import QRCode from 'react-qr-code';
 import { useParams } from 'react-router-dom'
 
 
