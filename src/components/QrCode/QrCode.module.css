@@ -1,3 +1,53 @@
-h1{
-    text-align: center;
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+   
+}
+
+@keyframes text {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container .content {
+
+    & p{
+        animation: text 2s 2s forwards;
+    }
+
+
+     & h3{
+
+        font-size: 14px;
+
+        & b{
+            color: rgb(5, 196, 5);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+        }
+    }
+
+    & .text{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        
+
+        & h2 {
+            color: red;
+        }
+    }
 }

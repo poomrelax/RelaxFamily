@@ -55,7 +55,7 @@ const router = createBrowserRouter([
     element: <Homeworkadmin/>
   },
   {
-    path: "/qrcode",
+    path: "/qrcode/:name/:email",
     element: <QrCode/>
   },
   {
