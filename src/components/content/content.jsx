@@ -16,7 +16,7 @@ function Content() {
 
   async function fetchData() {
     try{
-      const res = await fetch("https://node-api-production-95c1.up.railway.app/video/");
+      const res = await fetch("https://homework-api-9ftf.onrender.com/video/");
     res
       .json()
       .then((res) => setdata(res))

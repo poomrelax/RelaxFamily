@@ -14,7 +14,7 @@ function Information() {
 
     async function fetchData() {
       try{
-        await axios.get('https://apipoomrelax.onrender.com/infor')
+        await axios.get('https://homework-api-9ftf.onrender.com/infor')
           .then(res => {
             console.log(res)
             setData(res.data)

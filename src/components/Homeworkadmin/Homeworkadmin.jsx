@@ -25,7 +25,7 @@ function Homeworkadmin() {
     //   navigator("/homework")
     // }
 
-  const url = 'https://node-api-production-4fa0.up.railway.app/'
+  const url = 'https://homework-api-9ftf.onrender.com/'
 
   if(!loginhomework) {
     navigator('/login')

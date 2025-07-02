@@ -19,7 +19,7 @@ function Register() {
     const [submitLodding, setsubmitLodding] = useState(false)
     const [IdCreat, setIdCreat] = useState("")
 
-     const url = 'https://node-api-production-4fa0.up.railway.app/'
+     const url = 'https://homework-api-9ftf.onrender.com/'
 
     // console.log(IdCreat)
 
