@@ -18,7 +18,7 @@ function Family() {
     const navigate = useNavigate()
     const loginhomework = JSON.parse(localStorage.getItem('loginhomework'))
 
-    const url = 'https://homework-api-9ftf.onrender.com'
+    const url = 'https://homework-api-9ftf.onrender.com/'
 
     async function fetfamily() {
         setloadding(true)
