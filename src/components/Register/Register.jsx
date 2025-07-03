@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import FadeLoader from "react-spinners/FadeLoader";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import env from '../../../url_data.json'
 
 
 function Register() {
@@ -19,7 +20,7 @@ function Register() {
     const [submitLodding, setsubmitLodding] = useState(false)
     const [IdCreat, setIdCreat] = useState("")
 
-     const url = 'https://homework-api-9ftf.onrender.com/'
+     const url = env.url_api
 
     // console.log(IdCreat)
 

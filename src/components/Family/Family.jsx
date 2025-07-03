@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate, useParams, BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
+import env from '../../../url_data.json'
 
 function Family() {
 
@@ -18,7 +19,7 @@ function Family() {
     const navigate = useNavigate()
     const loginhomework = JSON.parse(localStorage.getItem('loginhomework'))
 
-    const url = 'https://homework-api-9ftf.onrender.com'
+    const url = env.url_api
 
     async function fetfamily() {
         setloadding(true)

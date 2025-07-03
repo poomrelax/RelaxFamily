@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import FadeLoader from "react-spinners/FadeLoader";
 // import axios from 'axios'
+import env from '../../../url_data.json'
 
 
 function Login() {
@@ -12,7 +13,7 @@ function Login() {
   const token = localStorage.getItem("loginhomework")
   const navigator = useNavigate();
 
-  const url = 'https://homework-api-9ftf.onrender.com/mainhomework/'
+  const url = env.url_api + 'mainhomework/'
 
   if(token) {
     navigator('/homework')

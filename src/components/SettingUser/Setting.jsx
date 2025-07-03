@@ -5,7 +5,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-
+import env from '../../../url_data.json'
 
 function Setting() {
 
@@ -16,7 +16,7 @@ function Setting() {
 
     const id =  JSON.parse(localStorage.getItem('loginhomework'))
 
-    const url = 'https://homework-api-9ftf.onrender.com/mainhomework/'
+    const url = env.url_api + 'mainhomework/'
 
     
 
