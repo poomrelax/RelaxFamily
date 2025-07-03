@@ -15,6 +15,7 @@ import Order from './components/order/order.jsx'
 import Setting from './components/SettingUser/Setting.jsx'
 import QrCode from './components/QrCode/QrCode.jsx'
 import Family from './components/Family/Family.jsx'
+import Record from './components/Record/Record.jsx'
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/homeworkadmin",
     element: <Homeworkadmin/>
+  },
+  {
+    path: "/record",
+    element: <Record/>
   },
   {
     path: "/qrcode/:name/:email",

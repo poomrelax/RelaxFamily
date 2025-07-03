@@ -49,8 +49,9 @@ function Register() {
                 await axios.post(url + 'mainhomework/create', data).then((res) => {
                     setIdCreat(res.data.id)
                     toast.success("success")
-                    adduser.style.display = 'none'
-                    addFamily.style.display = 'block'
+                    // adduser.style.display = 'none'
+                    // addFamily.style.display = 'block'
+                    navigate('/login')
                     setsubmitLodding(false)
                     // console.log(id)
                 })

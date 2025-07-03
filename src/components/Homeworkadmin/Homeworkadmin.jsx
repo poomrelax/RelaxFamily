@@ -56,7 +56,7 @@ function Homeworkadmin() {
 
       window.onload = () => {
         const other_id = window.document.getElementById('other_id')
-        alert("success")
+        // alert("success")
       }
 
       function checkselect(text) {
@@ -195,7 +195,7 @@ function Homeworkadmin() {
                       <Select onChange={(e) => checkselect(e.value)} options={selecthomework} styles={Select}/>
                     </div>
                     <div className="input-form" id="other_id" style={{display: 'none'}}>
-                      <label>อื่นๆ</label>
+                      <label>ระบุ</label>
                      <input type="text" placeholder="อื่นๆ" onChange={(e) => setsubject(e.target.value)}/>
                     </div>
                     <div className="input-form">
