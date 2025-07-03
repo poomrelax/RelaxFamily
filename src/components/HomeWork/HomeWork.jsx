@@ -5,6 +5,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import Nav from '../Nav/Nav';
 import ถูกremovebg from '../../image/ถูกremovebg.png'
 import { useNavigate } from 'react-router-dom';
+import env from '../../../url_data.json'
 
 function HomeWork() {
   const [loading, setloading] = useState(true);
@@ -14,7 +15,7 @@ function HomeWork() {
   const navigator = useNavigate();
   const loginhomework = JSON.parse(localStorage.getItem("loginhomework"))
 
-  const url = 'https://homework-api-9ftf.onrender.com/mainhomework/'
+  const url = env.url_api + 'mainhomework/'
 
   if(!loginhomework) {
     navigator('/login')

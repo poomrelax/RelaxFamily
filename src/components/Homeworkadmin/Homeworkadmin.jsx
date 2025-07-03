@@ -7,6 +7,7 @@ import Select from 'react-select'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Popup from "./popup";
+import env from '../../../url_data.json'
 
 function Homeworkadmin() {
     const [loading, setloading] = useState(true);
@@ -25,7 +26,7 @@ function Homeworkadmin() {
     //   navigator("/homework")
     // }
 
-  const url = 'https://homework-api-9ftf.onrender.com/'
+  const url = env.url_api
 
   if(!loginhomework) {
     navigator('/login')
