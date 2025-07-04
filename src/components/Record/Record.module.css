@@ -41,6 +41,15 @@
     & td:nth-child(3){
         color: #777777;
     }
+
+    & button{
+        background: red;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
 
 .loadding{

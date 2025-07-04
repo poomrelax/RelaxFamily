@@ -5,17 +5,37 @@ import { Mosaic } from 'react-loading-indicators';
 import axios from 'axios';
 import env from '../../../url_data.json'
 import Nav from '../Nav/Nav';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Record() {
 
     const [loadding, setLoadding] = useState(true)
+    const [data, setdata] = useState([])
 
     const user_date = JSON.parse(localStorage.getItem('loginhomework'))
 
     async function fetdata() {
-        await axios.get(env.url_api + "mainhomework/record/" + user_date.id).then(res => {
+        // await axios.get(env.url_api + "mainhomework/record/" + user_date.id).then(res => {
+            // console.log(res.data)
+            // setdata(res.data)
+            // setLoadding(false)
+        // })
+
+        const record_data = await axios.get(env.url_api + "mainhomework/record/" + user_date.id)
+        const res = record_data.data.sort((a, b) =>{
+            new Date(b.createdAt) - new Date(a.createdAt)
+        })
+
+        console.log(res)
+        setdata(res)
+        setLoadding(false)
+    }
+
+    async function deleteHomework(id) {
+        await axios.delete(env.url_api + "mainhomework/record/" + user_date.id + "/" + id).then(res => {
             console.log(res.data)
-            setLoadding(false)
+            fetdata()
+            toast.success('ลบสำเร็จ')
         })
     }
 
@@ -33,6 +53,7 @@ function Record() {
         </div>
        </>
     )}
+    <ToastContainer style={{marginTop: '4rem'}}/>
     <div className={recordStyle.container}>
         <div className={recordStyle.content}>
             <h1>ประวัติการบ้าน <IoBookOutline/></h1>
@@ -46,9 +67,18 @@ function Record() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        
-                    </tr>
+                    {data.map((record) => {
+                        return(
+                            <>
+                                <tr>
+                                    <td>{record.subject}</td>
+                                    <td>{record.desc}</td>
+                                    <td>{record.date}</td>
+                                    <td><button onClick={() => {deleteHomework(record.id)}}>ลบ</button></td>
+                                </tr>
+                            </>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
